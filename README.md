@@ -42,7 +42,32 @@ The project uses:
 - **Scaling:** StandardScaler
 - **Dimensionality Reduction:** PCA
 
-### Workflow
+## 📈 Model Performance
+
+The trained HOG + PCA + SVM model achieved an accuracy of **77.0%** on the test dataset.
+
+### Classification Report
+
+| Class | Precision | Recall | F1-Score |
+|------|-----------|--------|----------|
+| Cat | 0.77 | 0.78 | 0.77 |
+| Dog | 0.77 | 0.76 | 0.77 |
+
+**Overall Accuracy: 77.0%**
+
+### Confusion Matrix
+
+```text
+[[777 223]
+ [237 763]]
+```
+
+The model correctly classified:
+
+- **777 Cat images**
+- **763 Dog images**
+
+## 🔄 Workflow
 
 ```text
 Input Image
@@ -78,15 +103,40 @@ Cat / Dog Prediction
 
 The `dataset/` folder is stored locally and is not uploaded to GitHub.
 
-## 🛠️ Installation and Usage
+## 🛠️ Technologies Used
 
-### 1. Install Dependencies
+- Python
+- OpenCV
+- NumPy
+- Scikit-learn
+- Scikit-image
+- Joblib
+- Pillow
+- Streamlit
+- Git
+- GitHub
+
+## ⚙️ Installation and Usage
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/sravanthireddy7577/SCT-ML-Task-03-Cats-Dogs-Classification.git
+```
+
+### 2. Navigate to the Project Folder
+
+```bash
+cd SCT-ML-Task-03-Cats-Dogs-Classification
+```
+
+### 3. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 2. Train the Model
+### 4. Train the Model
 
 Make sure the dataset is available locally in:
 
@@ -114,18 +164,26 @@ scaler.pkl
 pca.pkl
 ```
 
-### 3. Run the Streamlit Application
+### 5. Run the Streamlit Application
 
 ```bash
 python -m streamlit run app.py
 ```
 
-### 4. Make a Prediction
+### 6. Make a Prediction
 
 - Upload a JPG, JPEG, or PNG image.
 - The image is preprocessed.
 - HOG features are extracted.
-- The trained model predicts **Cat** or **Dog**.
+- The features are scaled.
+- PCA is applied.
+- The trained SVM model predicts **Cat** or **Dog**.
+
+## 🌐 Live Application
+
+The project is deployed using **Streamlit Community Cloud**.
+
+The application allows users to upload an image and receive a Cat or Dog prediction.
 
 ## ⚠️ Limitations
 
@@ -133,11 +191,14 @@ python -m streamlit run app.py
 - Images containing both a cat and a dog may produce a single prediction.
 - Images from other categories may still be classified as either Cat or Dog.
 - The model uses grayscale images.
+- Prediction performance may vary depending on image quality, lighting, background, and similarity to the training dataset.
 
 ## 💼 Internship Details
 
-**Organization:** SkillCraft Technology  
-**Domain:** Machine Learning  
+**Organization:** SkillCraft Technology
+
+**Domain:** Machine Learning
+
 **Task:** Task 03 – Cats vs Dogs Classification using SVM
 
 ## 👩‍💻 Author
